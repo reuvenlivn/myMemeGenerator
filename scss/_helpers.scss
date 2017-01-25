@@ -1,0 +1,59 @@
+.clean_list {
+  list-style: none;
+}
+.fLeft{
+  float: left;
+}
+.fRight{
+  float: right;
+}
+
+.img_responsive {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.hide {
+  display:none;
+}
+
+.show{
+  display:block;
+}
+
+/* Breakpoint mixins */
+@mixin for-mobile-only {
+  @media (max-width: $mobile_breakpoint) {
+    @content;
+  }
+}
+
+/*----------  Flex Helpers  ----------*/
+
+.flex {
+  display: flex;
+}
+
+.align_center {
+  align-items: center;
+}
+
+.justify_center {
+  justify-content: center;
+}
+
+.space_between {
+  justify-content: space-between;
+}
+
+.flex_wrap {
+  flex-wrap: wrap;
+}
+
+.full_height {
+  height: 100%;
+}
+
+

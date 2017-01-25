@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Meme Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/ico" href="favicon.png" />
+    
+    <!-- bootstrap and jQ -->
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/fonts/Awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="dist/style.css" />
+</head>
+
+<body onload="init()">
+
+    <!-- HEADER -->
+    <header class="container lightblack_bg header_div">
+        <div class="inner_container_header">
+            <nav class="main_nav flex">
+                <input type="checkbox" id="main_nav__mobile_checkbox">
+                <label for="main_nav__mobile_checkbox" class="main_nav__mobile_icon">&#9776;</label>
+                <div class="main_nav__inner flex space_between">
+                    <ul class="clean_list main_nav__items flex justify_center">
+                        <li><a href="#" id="scrollPortfolio" class="main_nav__item align-center">Portfolio</a></li>
+                        <li><a href="#" id="scrollGetintouch" class="main_nav__item align-center">Get in touch</a></li>
+                        <li><a href="#" class="main_nav__item align-center logo_item"><img src="assets/logo.png" /></a></li>
+                        <li><a href="#" id="scrollAbout" class="main_nav__item align-center">About</a></li>
+                        <li><a href="#" class="main_nav__item align-center">Non active</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- black tringle under the top nav  -->
+    <div class="main_nav_bottom_wrapper">
+        <span class="main_nav_bottom"></span>
+    </div>
+    <!-- END OF Header-->
+
+    <!-- MAIN -->
+    <main class="white_bg">
+        <span id="portfolio"></span>
+        <div class="inner_container">
+            <!--content main-->
+
+            <h1>Meme Generator</h1>
+            <div class="main_container">
+                <!-- TOOLS -->
+                <div class="flex space_between tools">
+                    <form class="form-inline flex space_around" style="width: 100%;">
+                        <div class="form-group">
+                            <span id="galleryView" class="SELECTOR_btn_view tools_view_btn" title="Gallery view">
+                                <i class="fa fa-th-large" aria-hidden="true"></i>                        
+                            </span>
+                            <span id="listView" class="SELECTOR_btn_view tools_view_btn" title="List view">
+                                <i class="fa fa-th-list" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" name="currency" id="searchkeyword" type="text" onkeyup="searchKeyword();" placeholder="key1 key 2..."/>
+                            <span onclick="searchKeyword();" class="btn btn-default btn_search_keyword">
+                                Search keyword
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="editUserImage" placeholder="yyy.jpg" />
+                            <span onclick="editExternalImage();" class="btn btn-default btn_add_image">
+                                Edit image
+                            </span>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- EDITOR -->
+                <div id="canvasEditor" class="canvas_editor_wrap">
+                    <div class="canvas_editor">
+                        <div class="canvas_editor_img fLeft">
+                            <canvas class="" id="memeCanvas" width="500" height="365">
+                            </canvas>
+                        </div>
+                        <div class="canvas_editor_meme fLeft">
+                            <button class="btn btn-default btn_gen btn_back" onclick="goBackClicked()" id="closeCanvasEditor">
+                                Go back
+                            </button>
+                            <br />
+                            <input class="c_e_input" id="lineText1" onkeyup="setTextLine(1)" />
+                            <br />
+                            <div class="flex space_between">
+                                <div class="btn-group c_e_btn_1" role="group" aria-label="Increase/Decrease Font">
+                                    <button class="btn btn-default" id="incFontSize1" onclick="incFontSize(1)"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+                                    <button class="btn btn-default" id="decFontSize1" onclick="decFontSize(1)"><i class="fa fa-minus-square-o" aria-hidden="true"></i></button>
+                                </div>
+                                <div class="btn-group c_e_btn_1" role="group" aria-label="Increase/Decrease Font">
+                                    <button class="btn btn-default" id="alignLeft1" onclick="alignLeft(1)"><i class="fa fa-align-left" aria-hidden="true"></i></button>
+                                    <button class="btn btn-default" id="alignCenter1" onclick="alignCenter(1)"><i class="fa fa-align-center" aria-hidden="true"></i></button>
+                                    <button class="btn btn-default" id="alignRight1" onclick="alignRight(1)"><i class="fa fa-align-right" aria-hidden="true"></i></button>
+                                </div>
+
+                                <input class="btn btn-default btn_color" value="#ff00ff" id="colorPicker1" oninput="setColor(1)" type="color" />
+                            </div>
+                            <select class="c_e_select fRight" id="fontFamily1" onchange="setFontFamily(1)">
+                                <option value="Helvetica">Helvetica</option>
+                                <option value="Comics Sans MS">Comics Sans MS</option>
+                                <option value="Courier">Courier</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                            </select>
+                            <br />
+
+                            <input class="c_e_input" id="lineText2" onkeyup="setTextLine(2)" />
+                            <br />
+
+                            <div class="flex space_between">
+                                <div class="btn-group c_e_btn_1" role="group" aria-label="Increase/Decrease Font">
+                                    <button class="btn btn-default" id="incFontSize2" onclick="incFontSize(2)"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+                                    <button class="btn btn-default" id="decFontSize2" onclick="decFontSize(2)"><i class="fa fa-minus-square-o" aria-hidden="true"></i></button>
+                                </div>
+                                <div class="btn-group c_e_btn_1" role="group" aria-label="Increase/Decrease Font">
+                                    <button class="btn btn-default" id="alignLeft2" onclick="alignLeft(2)"><i class="fa fa-align-left" aria-hidden="true"></i></button>
+                                    <button class="btn btn-default" id="alignCenter2" onclick="alignCenter(2)"><i class="fa fa-align-center" aria-hidden="true"></i></button>
+                                    <button class="btn btn-default" id="alignRight2" onclick="alignRight(2)"><i class="fa fa-align-right" aria-hidden="true"></i></button>
+                                </div>
+                                <input class="btn btn-default btn_color" value="#ff0000" id="colorPicker2" oninput="setColor(2)" type="color" />
+                            </div>
+                            
+                            <select class="c_e_select fRight" id="fontFamily2" onchange="setFontFamily(2)">
+                                <option value="Helvetica">Helvetica</option>
+                                <option value="Comics Sans MS">Comics Sans MS</option>
+                                <option value="Courier">Courier</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                            </select>
+                            <br />
+                            
+                            <a onclick="saveImage(this)" class="btn btn-default btn_save" id="save">
+                                Save
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- END OF Editor-->
+
+                <!-- MEMES -->
+                <div id="memeContainer" class="memes_container flex flex_wrap space_around fLeft">
+
+                    <!--SINGLE MEME -->
+                    <div onclick="getUserImg(1)" class="meme_div">
+                        <div class="hexagon img1">
+                            <div class="hexTop"></div>
+                            <div class="hexBottom"></div>
+                        </div>
+                    </div>
+                    <!-- SINGLE MEME -->
+                    <div onclick="getUserImg(2)" class="meme_div">
+                        <div class="hexagon img2">
+                            <div class="hexTop"></div>
+                            <div class="hexBottom"></div>
+                        </div>
+                    </div>
+                    <!--SINGLE MEME -->
+                    <div onclick="getUserImg(3)" class="meme_div">
+                        <div class="hexagon img3">
+                            <div class="hexTop"></div>
+                            <div class="hexBottom"></div>
+                        </div>
+                    </div>
+                    <!-- SINGLE MEME -->
+                    <div onclick="getUserImg(4)" class="meme_div">
+                        <div class="hexagon img4">
+                            <div class="hexTop"></div>
+                            <div class="hexBottom"></div>
+                        </div>
+                    </div>
+                    <!--SINGLE MEME -->
+                    <div onclick="getUserImg(5)" class="meme_div">
+                        <div class="hexagon img5">
+                            <div class="hexTop"></div>
+                            <div class="hexBottom"></div>
+                        </div>
+                    </div>
+                    <!-- SINGLE MEME -->
+                    <div onclick="getUserImg(6)" class="meme_div">
+                        <div class="hexagon img6">
+                            <div class="hexTop"></div>
+                            <div class="hexBottom"></div>
+                        </div>
+                    </div>
+                    <!--SINGLE MEME -->
+                    <div onclick="getUserImg(7)" class="meme_div">
+                        <div class="hexagon img7">
+                            <div class="hexTop"></div>
+                            <div class="hexBottom"></div>
+                        </div>
+                    </div>
+                    <!-- SINGLE MEME -->
+                    <div onclick="getUserImg(8)" class="meme_div">
+                        <div class="hexagon img8">
+                            <div class="hexTop"></div>
+                            <div class="hexBottom"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="keywords_rating fLeft">
+                    <!--<i>-- KEYWORDS --</i>-->
+                    <br />
+                    <div id="ratingKeywords">
+                        <!--<span class="rate_5">summer</span>
+                        <span class="rate_2">animals</span>
+                        <span class="rate_4">cute</span>
+                        <span class="rate_3">movies</span>
+                        <span class="rate_1">flowers</span>
+                        <span class="rate_1">funny</span>
+                        <span class="rate_4">horror</span>
+                        <span class="rate_2">faces</span>
+                        <span class="rate_5">kids</span>
+                        <span class="rate_3">emotions</span>-->
+                    </div>
+                </div>
+            </div>
+            <!--END OF content main-->
+        </div>
+    </main>
+
+    <!-- ABOUT  -->
+    <span id="about"></span>
+    <section class="turquoise_bg">
+        <div class="inner_container">
+
+            <div class="about">
+                <div class="about_image fLeft">
+                    <div class="hexagon shahar">
+                        <div class="hexTop"></div>
+                        <div class="hexBottom"></div>
+                    </div>
+                </div>
+                <div class="about_text">
+                    <div class="about_name">Shahar</div>
+                    <div class="about_prof">Web developer</div>
+                    <div class="about_desc">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in
+                    </div>
+                    <div class="apps_links_container">
+                        <div class="">
+                            <i class="fa fa-linkedin" title="LinkedIn" aria-hidden="true"></i>
+                        </div>
+                        <div class="">
+                            <i class="fa fa-facebook" title="FaceBook" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about">
+                <div class="about_image fLeft">
+                    <div class="hexagon reuven">
+                        <div class="hexTop"></div>
+                        <div class="hexBottom"></div>
+                    </div>
+                </div>
+                <div class="flex flex_wrap align_center">
+                    <div class="about_name">Reuven </div>
+                    <div class="about_prof">Web developer</div>
+                    <div class="about_desc">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in
+                    </div>
+                    <div class="apps_links_container">
+                        <div class="">
+                            <a href="https://www.linkedin.com/in/reuven-livneh-b1237317">
+                                <i class="fa fa-linkedin" title="LinkedIn" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="">
+                            <a href="https://www.facebook.com/reuven.livneh">
+                                <i class="fa fa-facebook" title="FaceBook" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GET IN TOUCH  -->
+    <span id="getintouch"></span>
+    <section class="lightblack_bg">
+        <div class="inner_container">
+            <div class="touch">
+                <div class="touch_title form_title_color">
+                    GET IN TOUCH
+                </div>
+                <span class="form_text_color">In order to get in touch use the contact form below</span>
+            </div>
+
+            <div class="touch_left">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input id="userName" tabindex="1" placeholder="Name > required field" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input id="userEmail" tabindex="2" type="email" placeholder="Email > required field" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input id="userSubject" tabindex="3" placeholder="Subject > required field" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <textarea id="userMessage" tabindex="4" cols="60" rows="10" placeholder="Write your message here...  > required field" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button tabindex="5" class="btn_send" onclick="return false;" title="Send the form">SEND</button>
+                    </div>
+                </form>
+
+                <!-- user feedback -->
+                <span id="userFeedback" class="user_feedback"></span>
+                <br />
+            </div>
+            <div class="touch_right">
+                <strong form_text_color>Quisque Hendrerit:</strong> purus dapibus, ornare nibh vitae, viverra nibh. Fusce
+                vitae aliquam tellus. Proin sit amet volutpat libero. Nulla sed nunc et tortor luctus faucibus morbi vitae.
+
+                <div class="touch_details ">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> Elm St. 14/05 Lost City
+                    <br />
+                    <i class="fa fa-phone" aria-hidden="true"></i> + 3528 331 86 35
+                    <br />
+                    <i class="fa fa-envelope" aria-hidden="true"></i> info@hexalcorp.com
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="darkblack_bg align_center">
+        <div class="inner_container footer darkgrey">
+            © Copyright 2017 Shahar Haramati C. & Reuven Livne
+            <br />asfdasdfasf<br />asfdasdfasf<br />asfdasdfasf
+        </div>
+    </footer>
+    
+    <!-- INCLUDES -->
+    <script src="lib/jquery/jquery-1.9.1.js"></script>
+    <script src="lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+
+    <!--<script type="text/javascript" src="lib/jquer/autocomplete/js/jquery-1.9.1.min.js"></script>-->
+    <script type="text/javascript" src="lib/jquery/autocomplete/js/jquery.autocomplete.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/autocomplete/js/currency-autocomplete.js"></script>
+    <script src="js/jqHelpers.js"></script>
+    <script src="js/contactForm.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/editor.js"></script>
+
+
+</body>
+
+</html>

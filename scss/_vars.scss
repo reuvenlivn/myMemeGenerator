@@ -1,0 +1,28 @@
+$container_width: 100%;
+$mobile_breakpoint: 690px;
+$tablet_breakpoint: 690px;
+
+:root {
+  /* Layout */
+  --container_width: $container-width;
+  --inner_container_width: 980px;
+
+  /* Fonts */
+  --primary_font: Lato;
+  --secondary_font: MavenProRegular;
+  
+  /* Colors */
+  --main_color: #626262;
+  --sections_bg: #f0f0f0;
+  --white1: #ffffff;
+  --lightblack1: #323232;
+  --darkblack1: #222222;
+  --turquoise1: #2eb398;
+  --lightgreen1: #d7fcf5;
+  --darkgreen1: #20816d;
+  --darkgrey1: #454545;
+  --form_title_color: #E0E0E0;
+  --form_text_color: #bebebe;
+}
+
+

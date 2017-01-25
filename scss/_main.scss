@@ -1,0 +1,188 @@
+/* MAIN MEME */
+
+.top_margin_main{
+    margin-top: 56px;
+}
+
+.main_container{
+    overflow: hidden;
+    width: 100%;
+}
+
+.autocomplete-suggestions{
+    background: gold;
+    overflow-y: scroll;
+    box-shadow: 5px 5px 10px #000000;
+    padding: 3px;
+}
+
+.tools{
+    margin-bottom: 20px;
+}
+
+.tools form{
+	@include for-mobile-only {
+        flex-direction: column;
+        text-align: center;
+	}  
+}
+
+.tools form .form-group{
+	@include for-mobile-only {
+        justify-content: center;
+	}  
+}
+
+/* change position of .tools_view_btn */
+.tools form .form-group:first-child{
+	@include for-mobile-only {
+        order: 99;
+        text-align: left;
+	}  
+}
+
+.tools input[type=text]{
+    background: lightgrey;
+    height: 1.8em;
+    color: black;
+    padding: 0 4px 2px 4px !important;
+	@include for-mobile-only {
+    	float: none;
+        width: 65%;
+        padding: 10px 2px;
+        margin:  auto;
+	}  
+}
+
+.tools .btn_search_keyword, .tools .btn_add_image{
+    background: var(--turquoise1);
+    height: 1.8em;
+    line-height: 0.7em;
+    border: solid 1px grey;
+	@include for-mobile-only {
+    	float: none;
+        width: 65%;
+        margin: 10px auto;
+	}
+}
+.tools .btn_search_keyword:hover, .tools .btn_add_image:hover{
+    box-shadow: inset -1px -1px 5px #000000;
+}
+
+.tools BUTTON{
+    background: var(--turquoise1);
+    height: 1.8em;
+    line-height: 0.7em;
+    border: solid 1px grey;
+	@include for-mobile-only {
+    	float: none;
+        width: 65%;
+        margin: 10px auto;
+	}
+}
+
+.tools_view_btn{
+    padding: 2px 5px 0 5px;
+    cursor: pointer;
+    border: solid 1px grey;
+    display: inline-block;
+    border-radius: 3px;
+	@include for-mobile-only {
+    	float: none;
+	}
+}
+.tools_view_btn:hover{
+    color: var(--turquoise1);
+}
+.tools_view_btn_checked{
+    color: var(--turquoise1);
+}
+
+.memes_container{
+    width: 65%;
+    padding: 10px 10px 10px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+	@include for-mobile-only {
+    	float: none;
+        width: 100%;
+        padding: 10px 0;
+	}  
+}
+
+.meme_div{
+    display: inline-block;
+    max-height: 140px;
+    min-height: 50px;
+    margin: 10px;
+    background-size: 100% 100%;
+}
+
+.keywords_rating{
+    width: 35%;
+    overflow: hidden;
+    line-height: 1.8em;
+    text-align: justify;
+    margin: 14px 0 0 0;
+	@include for-mobile-only {
+    	float: none;
+        width: 100%;
+        padding: 10px 0;
+	}  
+}
+
+.rate_1{font-size: 16px;}
+.rate_2{font-size: 24px;}
+.rate_3{font-size: 34px;}
+.rate_4{font-size: 46px;}
+.rate_5{font-size: 60px;}
+.rate_6{font-size: 76px;}
+
+
+.img1{
+    background: url(../assets/img1.jpg) center no-repeat;
+    background-size: cover;
+    cursor: pointer; 
+}
+
+.img2{
+    background: url(../assets/img2.jpg) center no-repeat;
+    background-size: cover;
+    cursor: pointer; 
+}
+
+.img3{
+    background: url(../assets/img3.jpg) center no-repeat;
+    background-size: cover;
+    cursor: pointer; 
+}
+
+.img4{
+    background: url(../assets/img4.jpg) center no-repeat;
+    background-size: cover;
+    cursor: pointer; 
+}
+
+.img5{
+    background: url(../assets/img5.jpg) center no-repeat;
+    background-size: cover;
+    cursor: pointer; 
+}
+
+.img6{
+    background: url(../assets/img6.jpg) center no-repeat;
+    background-size: cover;
+    cursor: pointer; 
+}
+
+.img7{
+    background: url(../assets/img7.jpg) center no-repeat;
+    background-size: cover; 
+    cursor: pointer;
+}
+
+.img8{
+    background: url(../assets/img8.jpg) center no-repeat;
+    background-size: cover; 
+    cursor: pointer;
+}
